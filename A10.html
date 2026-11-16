@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Cookie Demonstration</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			width: 80%;
+			max-width: 1024px;
+			margin: auto;
+			border: 2px solid #800000;
+			line-height: 1.5;
+		}
+
+		header {
+			background-color: #800000;
+			color: white;
+			text-align: center;
+			padding: 1em;
+		}
+
+		main {
+			padding: 1em;
+			min-height: 200px;
+		}
+
+		footer {
+			background-color: #800000;
+			color: white;
+			text-align: center;
+			padding: 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>Cookie Demonstration</h1>
+	</header>
+
+	<main>
+		<h2>Welcome!</h2>
+		<p id="message">Checking for your cookie...</p>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 Remy Hunt | Due: 11/24/26</p>
+	</footer>
+
+	<script>
+		// Check if a cookie already exists
+		let username = document.cookie;
+
+		if (username == "") {
+			// Ask the user for their name
+			username = prompt("Please enter your name:");
+
+			// Save the name in a cookie
+			if (username != null && username != "") {
+				document.cookie = "username=" + username + "; max-age=86400; path=/";
+			}
+		} else {
+			// Get the saved name from the cookie
+			username = username.substring(username.indexOf("=") + 1);
+		}
+
+		// Display the cookie value
+		if (username != null && username != "") {
+			document.getElementById("message").innerHTML =
+				"Welcome back, " + username + "! Your cookie has been saved.";
+		} else {
+			document.getElementById("message").innerHTML =
+				"No cookie was saved.";
+		}
+	</script>
+</body>
+
+</html>
